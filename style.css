@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  --accent-color: orangered;
+  --color: white;
+  --title-color: black;
+  --background-color: white;
+  --transition-delay: 1000ms;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--background-color);
+  overflow: hidden;
+  transition: var(--transition-delay);
+}
+
+.dark {
+  --accent-color: yellow;
+  --color: #333;
+  --title-color: white;
+  --background-color: #333;
+}
+
+.swapper-btn {
+  display: flex;
+  align-items: center;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  background-color: var(--accent-color);
+  color: var(--color);
+  transform: scale(1);
+}
+
+.swapper-btn:hover,
+.swapper-btn:focus {
+  transform: scale(1.1);
+}
+.icon {
+  fill: var(--color);
+  margin-right: 0.5em;
+}
+
+.title {
+  color: var(--title-color);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.sun-moon-container {
+  --rotation: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  height: 200vmin;
+  transform: rotate(var(--rotation));
+  transition: transform var(--transition-delay); /* Ensure transition is applied */
+}
+.dark .sun-moon-container {
+  --rotation: 180deg;
+}
+
+.sun,
+.moon {
+  position: absolute;
+  transition: opacity, fill, var(--transition-delay);
+  fill: var(--accent-color);
+}
+
+.sun {
+  top: 5%;
+  opacity: 1;
+}
+.dark .sun {
+  opacity: 0;
+}
+.moon {
+  bottom: 5%;
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+.dark .moon {
+  opacity: 1;
+}
